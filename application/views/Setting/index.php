@@ -38,8 +38,8 @@
 												<h2>Edit password</h2>
 											</a>
 
-											<a href="#disable" class="py-[12px] px-[16px] block hover:bg-[#ddd] flex place-content-evenly bg-[#FF0000]">
-											<i class="fa-solid fa-user-slash pr-4 color-white"></i>
+											<a href="#disable" class="py-[12px] px-[16px] block hover:bg-[#ddd] flex place-content-evenly text-[#ff0000]">
+											<i class="fa-solid fa-user-slash pr-4"></i>
 												<h2>Disable account</h2>
 											</a>
 
@@ -48,21 +48,24 @@
 									</div>
 								</div>
 
-								<h1 class="rounded-full w-32 absolute top-20 transform pl-[43px] pt-[25px] -translate-y-3/2">admin</h1>
+								<h1 class="rounded-full w-32 absolute top-20 transform pl-[43px] pt-[25px] -translate-y-3/2"><p class="text-sm">
+                            <?php echo $this->session->userdata('user')['role']; ?>
+                        </p></h1>
 								<div class="bg-white px-[40px] w-[583.67px]  mt-[50px] h-[450px] rounded-lg pt-[90px]">
 									
 
 						<div class="grid gap-2 mb-2 md:grid-cols-2">
 								<div>
 										<label for="first_name" class="block text-sm font-medium text-gray-900 dark:text-black">First name</label>
-										<input type="text" id="first_name" class="bg-gray-50  text-black-900 text-sm rounded-lg block w-full p-2.5 " placeholder="John" disabled>
-										<!-- <p class="pl-6 border">
-											First Name
-										</p> -->
+										<input type="text" id="first_name" class="bg-gray-50  text-black-900 text-sm rounded-lg block w-full p-2.5" value=" <?php
+                            echo " {$this->session->userdata('user')['firstname']}";
+                            ?>" placeholder="John" disabled>
 								</div>
 								<div>
 										<label for="last_name" class="block text-sm font-medium text-gray-900 dark:text-black">Last name</label>
-										<input type="text" id="first_name" class="bg-gray-50  text-black-900 text-sm rounded-lg block w-full p-2.5 " placeholder="John" disabled>
+										<input type="text" id="first_name" class="bg-gray-50  text-black-900 text-sm rounded-lg block w-full p-2.5" value=" <?php
+                            echo "{$this->session->userdata('user')['lastname']}";
+                            ?>" placeholder="John" disabled>
 								</div>
 								<div>
 										<label for="age" class="block text-sm font-medium text-gray-900 dark:text-black">Age</label>
@@ -143,25 +146,25 @@
     </div>
 </div>
 <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function drop() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function drop() {
+	document.getElementById("myDropdown").classList.toggle("show");
+	}
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	if (!event.target.matches('.dropbtn')) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+		var openDropdown = dropdowns[i];
+		if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		}
+		}
+	}
+	}
 </script>
 
 <?php $this->load->view('components/footer'); ?>
