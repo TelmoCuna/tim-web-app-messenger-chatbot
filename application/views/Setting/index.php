@@ -2,7 +2,12 @@
 
 <style>
 
+.dropdown:hover .dropdown-content{
+	display: block;
+}
+
 .show {display: block;}
+
 </style>
 
 <div class="grid md:grid-cols-[250px_1fr]">
@@ -21,14 +26,14 @@
 							<div class="flex items-center justify-center relative">
 								<img src="https://i.pinimg.com/originals/a8/bc/90/a8bc90ea196737604770aaf9c2d56a51.jpg" class="rounded-full w-32 absolute top-10 transform -translate-y-1/2">
 
-								<div>
+								<div class="dropdown">
 									<img type="button" src="assets/images/setting.svg" onclick="drop()" class="dropbtn rounded-full w-7 absolute top-[75px] ml-[550px] transform -translate-y-1/2 cursor-pointer">
 
 									<div id="myDropdown" class="dropdown-content bg-white rounded absolute hidden z-1 drop-shadow-lg overflow-auto min-w-[150px] top-[100px] left-[700px]">
 
 										<div class="color-#000000 text-decoration-none p-4">
 
-											<a href="#edit" class="py-[12px] px-[16px] block hover:bg-[#ddd] flex place-content-evenly">
+											<a href="#edit" id="myBtn" class="py-[12px] px-[16px] block hover:bg-[#ddd] flex place-content-evenly">
 												<i class="fa-solid fa-pen-to-square pr-4 "></i>
 												<h2>Edit account</h2>
 											</a>
@@ -146,24 +151,50 @@
     </div>
 </div>
 <script>
+	// Get the modal
+	let modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	let btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	let span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
+	}
+	}
+
 	/* When the user clicks on the button, 
 	toggle between hiding and showing the dropdown content */
 	function drop() {
-	document.getElementById("myDropdown").classList.toggle("show");
+		document.getElementById("myDropdown").classList.toggle("show");
 	}
 
 	// Close the dropdown if the user clicks outside of it
 	window.onclick = function(event) {
-	if (!event.target.matches('.dropbtn')) {
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-		var i;
-		for (i = 0; i < dropdowns.length; i++) {
-		var openDropdown = dropdowns[i];
-		if (openDropdown.classList.contains('show')) {
-			openDropdown.classList.remove('show');
+		if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+			}
 		}
-		}
-	}
 	}
 </script>
 
